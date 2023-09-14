@@ -1,0 +1,304 @@
+
+body {
+    background-color: #232323;
+    color: #faf9f9;
+}
+
+
+a {
+    color: #000000;
+    text-decoration: none;
+    transition: all .3s ease-in-out;
+}
+
+a:hover {
+    color: #000000;
+    text-decoration: none;
+}
+
+table tbody tr td {
+    color: #ffffff;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #464646;
+    border-color: #464646;
+}
+
+/* Стили для остальных страниц */
+.pagination .page-link {
+    background-color: #2C2C2C;
+    border-color: #2C2C2C;
+    color: white; /* Цвет текста */
+}
+
+/* Стили для ссылки "Предыдущая" и "Следующая" */
+.pagination .page-item.disabled .page-link {
+    background-color: gray;
+    border-color: gray;
+    color: white; /* Цвет текста */
+}
+
+.welcome-text {
+    text-align: center;
+    margin-top: 35px; /* Регулируйте верхний отступ по вашему желанию */
+    margin-bottom: 35px;
+}
+
+.btn-red {
+    padding: 10px 10px;
+    background-color: #464646;
+    border-radius: 8px;
+    color: #fff;
+    width: 164px;
+}
+.btn-red:hover {
+    color: #faf9f9;
+}
+
+/* end base */
+.form-control {
+    background-color: #464646;
+    border-color: #464646;
+}
+
+.navbar {
+    background-color: #2C2C2C;
+    padding: 0 1rem;
+}
+
+.navbar .navbar-brand {
+    display: flex;
+    align-items: center; /* Выравнивание элементов по вертикали */
+}
+
+.navbar-brand h5 {
+    color: #fff;
+}
+
+.navbar .navbar-brand img {
+    max-width: 30px; /* Максимальная ширина логотипа */
+    margin-right: 13px; /* Расстояние между логотипом и текстом */
+}
+
+.navbar .navbar-nav .nav-item .nav-link, .navbar{
+    color: #fff;
+    font-size: 18px;
+    transition: all .2s ease-in-out;
+}
+
+.navbar .navbar-nav .nav-item {
+    padding: 0 10px;
+}
+
+
+.navbar .search .input-group {
+    width: 700px;
+}
+
+.navbar .search input[type='text'] {border-radius: 100px 0 0 100px;}
+
+.navbar .search button {
+    border-radius: 0 100px 100px 0;
+    background-color: #464646;
+    border-color: #464646;
+    color: #ffffff;
+}
+
+
+
+/* end navbar */
+
+/* start slider */
+
+#mangaslider .carousel-inner {
+    width: 800px; /* Ширина окна слайдера */
+    height: 400px; /* Высота окна слайдера */
+}
+
+#mangaslider {
+    margin: 0 auto; /* Центрирование по горизонтали */
+    max-width: 1350px; /* Максимальная ширина карусели */
+    text-align: center; /* Выравнивание по центру */
+}
+
+#mangaslider .carousel-inner {
+    width: 100%;
+    height: 400px; /* Высота окна слайдера */
+}
+
+#mangaslider .carousel-item img {
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-control-next, .carousel-control-prev {opacity: 1;}
+
+#mangaslider .carousel-control-prev div,
+#mangaslider .carousel-control-next div {
+    width: 50px;
+    height: 50px;
+    background-color: #2C2C2C;
+    line-height: 57px;
+    border-radius: 50%;
+}
+
+/* end slider */
+.center-text {
+    text-align: center; /* Выравнивание текста по центру */
+    margin-top: 50px; /* Верхний отступ, чтобы сдвинуть текст вниз */
+    font-size: 25px;
+}
+/* start lastest */
+
+.card.mb-3.h-100 {
+    background-color: #2C2C2C; /* Замените 'your-desired-color' на цвет, который вы хотите использовать */
+    color: #fff; /* Цвет текста на карточке */
+    border: none; /* Уберите рамку вокруг карточки (если нужно) */
+    border-radius: 10px; /* Закруглите углы карточки по вашему желанию */
+}
+
+.card-title a {
+    color: #fff; /* Цвет заголовка на карточке */
+}
+
+.lastest .posts .card {
+    background-color: #2C2C2C;
+    transition: all .3s ease-in-out;
+    z-index: 1;
+    border: 0;
+    color: #fff;
+    padding: 13px;
+    border-radius: 10px;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .lastest .posts .card .card-img-top {
+        height: auto;
+    }
+  }
+
+.lastest .posts .card .card-body {
+    padding: 5px;
+}
+
+.lastest .posts .card .card-text,
+.lastest .posts .card .card-title {margin: 0;}
+
+.lastest .posts .card .card-title a {color: #faf9f9;}
+
+/* card details */
+
+.cover img {
+    width: 270px; /* Устанавливаем ширину на 100% от родительского контейнера */
+    height: auto; /* Автоматически подстраиваем высоту для сохранения пропорций */
+}
+
+.lastest .posts .card .over {
+    position: absolute;
+    background-color: #fff;
+    bottom: 0;
+    left: 0;
+    height: 60%;
+    color: #070707;
+    display: none;
+    border-radius: 0 0 5px 5px;
+    font-size: 10px;
+}
+
+.lastest .posts .card .over .head {
+    color: #faf9f9;
+}
+.lastest .posts .card .over .head h6 {padding: 5px 10px;}
+
+.lastest .posts .card .over .about-list {padding-left: 10px;}
+.lastest .posts .card .over .table td,
+.lastest .posts .card .over .table th {
+    padding: 0;
+}
+
+
+
+.lastest .posts .card .over .reading {
+    font-size: 10px;
+    padding: 5px 10px;
+    color: #faf9f9;
+    border-radius: 0;
+}
+
+/* end lastest */
+
+/* start intro to read */
+
+
+.read-intro {
+    color: #ffffff;
+    position: relative;
+    padding: 25px 75px;
+}
+
+.read-intro .fa-bookmark {
+    position: absolute;
+    top: 30px;
+    right: 70px;
+    cursor: pointer;
+}
+
+.read-intro .cover {padding-right: 20px;}
+
+
+.read-intro .cover .shadow {
+    box-shadow: 0 0.225rem .5rem rgba(0,0,0,.15)!important;
+}
+
+/* end intro to read */
+
+/* start intro lists */
+
+.card-text 
+
+.intro-lists {color: #070707;}
+
+.intro-lists .head-list {
+    padding: 20px 0 0 20px;
+    font-size: 18px;
+}
+
+.intro-lists .head-list li a.active {
+    color: #ffffff;
+    font-weight: bold;
+    padding: 0 5px;
+}
+
+
+
+.intro-lists .head-list li:after{content: ' |';}
+.intro-lists .head-list li:last-child:after{content: '';}
+
+/* end intro lists */
+
+
+/* start footer */
+
+footer {
+    background-color: #2C2C2C;
+    margin-top: auto;
+}
+
+.wrapper {
+    min-height: 69vh; /* Минимальная высота, чтобы wrapper занимал всю видимую высоту */
+    display: flex;
+    flex-direction: column;
+}
+
+/* end footer */
+
+.bg-light {
+    background-color: #2C2C2C !important;
+}
+
+  .table {
+    color: #ffffff;
+}
+

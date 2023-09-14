@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Manga Reader</title>
+
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container py-3">
+            <a class="navbar-brand mr-auto" href="{% url 'index' %}"> <!-- Перенесите класс 'mr-auto' сюда -->
+                <img src="https://mangadex.org/img/brand/mangadex-logo.svg" alt="MangaReader Logo">
+                <h5>MangaReader</h5>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'index' %}">Главная <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'manga_catalog' %}">Каталог манги</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0" action="{% url 'search_manga' %}" method="GET">
+                    <input class="form-control mr-sm-2" type="text" name="q" placeholder="Введите название манги">
+                    <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit"><i class="fa fa-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+<div class="welcome-text text-center">
+    <h1>Каталог</h1>
+</div>
+
+    {% block content %}
+        <div class="catalog container mt-4 mt-sm-5">
+            <div class="row">
+                {% for manga in page %} {# Изменим цикл на page, который будет содержать текущую страницу пагинации #}
+                    <div class="col-lg-3 col-md-3 col-sm-4 mb-3">
+                        <div class="card mb-3 h-100">
+                            <a href="{% url 'manga_detail' manga.id %}">
+                                <img src="{{ manga.cover.url }}" class="card-img-top" alt="{{ manga.title }}">
+                            </a>
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="{% url 'manga_detail' manga.id %}">{{ manga.title }}</a>
+                                </h5>
+                                <p class="card-text">Дата добавления: {{ manga.upload_date|date:"d.m.Y" }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="pagination justify-content-center">
+                        {% if page.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page.previous_page_number }}">Предыдущая</a>
+                            </li>
+                        {% endif %}
+                        {% for i in page.paginator.page_range %}
+                            <li class="page-item {% if i == page.number %}active{% endif %}">
+                                <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                            </li>
+                        {% endfor %}
+                        {% if page.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page.next_page_number }}">Следующая</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+    <footer>
+        <div class="py-5 container-full fon 3 mt-4">
+            <div class="container">
+                <div class="row">
+                    <div class="text-light align-self-center col-12 col text-center text-uppercase">
+                        <p>
+                            <svg class="bi bi-telegram text-info" fill="currentColor" height="60" viewBox="0 0 16 16"
+                                 width="60">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z"></path>
+                            </svg>
+                            <br></p>
+                        <p></p></div>
+                    <div class="text-white my-4 col-12 col text-center text-uppercase"><h2><strong>Подписывайтесь<br>
+                        на наш телеграм канал</strong></h2><a href="https://t.me/snouv" target="_blank"
+                                                              class="text-white py-3 py-lg-3 btn btn-info px-lg-5 btn-lg mt-4">Написать
+                        в Telegram</a></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
